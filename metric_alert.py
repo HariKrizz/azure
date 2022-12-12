@@ -81,4 +81,4 @@ def metric(virtualmachine,rgname,rulename,**kwargs):
     #     rule_name
     # )
 
-    return f"{rule_name} succesfully created"
+    return f"{rule_name} Successfully Created!"
