@@ -29,7 +29,7 @@ def main():
 def resource_group():
     req_data = request.get_json()
     rgname = req_data['rgname']
-    rg=client.resource_groups.create_or_update(rgname, resource_group_params)
+    rg = client.resource_groups.create_or_update(rgname, resource_group_params)
     response = {
         "resource-group": rg.name,
         "location": rg.location,
@@ -39,7 +39,7 @@ def resource_group():
 @app.route('/list/resource/group',methods=['GET'])
 def list_resource_group():
     list_of_resource_groups = client.resource_groups.list()
-    groups=[]
+    groups = []
     for rg in list_of_resource_groups:
         groups.append(rg.name)
     return jsonify(groups)
@@ -48,10 +48,10 @@ def list_resource_group():
 @app.route('/list/resource/bygroup',methods=['GET'])
 def list_resource():
     args = request.args
-    rgname=args.get('rgname')
+    rgname = args.get('rgname')
     resource_list = client.resources.list_by_resource_group(rgname)
-    resources=list(resource_list)
-    rg_list=[]
+    resources = list(resource_list)
+    rg_list = []
     for resource in resources:
         rg_list.append(resource.name)
     return jsonify(rg_list)
@@ -59,7 +59,7 @@ def list_resource():
 @app.route('/list/all/resource/',methods=['GET'])
 def list_all_resource():
     resource_list = client.resources.list()
-    rg_list=[]
+    rg_list = []
     for resource in resource_list:
         rg_list.append(resource.name)
     return jsonify(rg_list)
@@ -104,14 +104,14 @@ def start():
 @app.route('/restart/vm',methods=['POST'])
 def restart():
     req_data = request.get_json()
-    response=restart_vm(**req_data)
+    response = restart_vm(**req_data)
     return response
 
 # required body items rgname,vm_name
 @app.route('/stop/vm',methods=['POST'])
 def stop():
     req_data = request.get_json()
-    response=stop_vm(**req_data)
+    response = stop_vm(**req_data)
     return response
 
 # required body item rgname
