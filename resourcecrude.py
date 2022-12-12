@@ -23,7 +23,7 @@ resource_group_name = "Flaskgroup"
 
 @app.route("/")
 def main():
-    return "Dev-anand Welcome Page"
+    return "Dev-Anand Welcome Page"
 
 @app.route('/create/resource/group',methods=['POST'])
 def resource_group():
@@ -68,36 +68,36 @@ def list_all_resource():
 @app.route('/create/vm',methods=['POST'])
 def vm():
     req_data = request.get_json()
-    response=create_vm(**req_data)
+    response = create_vm(**req_data)
     return jsonify(response)
 
-# required body items virtualmachine,rgname,rulename
+# required body items virtual machine,rgname, rule_name
 @app.route('/create/metric',methods=['POST'])
 def create_metric():
     req_data = request.get_json()
-    response=metric(**req_data)
+    response = metric(**req_data)
     return jsonify(response)
 
 # required parameter rgname,start_date,end_date
 @app.route('/get/cost',methods=['GET'])
 def get_cost():
     args = request.args
-    rgname=args.get('rgname')
-    start_date=args.get('start_date')
-    end_date=args.get('end_date')
-    response=cost_bill(rgname=rgname,start_date=start_date,end_date=end_date)
+    rgname = args.get('rgname')
+    start_date = args.get('start_date')
+    end_date = args.get('end_date')
+    response = cost_bill(rgname=rgname,start_date=start_date,end_date=end_date)
     return response
     
 @app.route('/get/vms',methods=['GET'])
 def get_vm():
-    response=list_vm()
+    response = list_vm()
     return jsonify(response)
 
 # required body items rgname,vm_name
 @app.route('/start/vm',methods=['POST'])
 def start():
     req_data = request.get_json()
-    response=start_vm(**req_data)
+    response = start_vm(**req_data)
     return response
 
 # required body items rgname,vm_name
