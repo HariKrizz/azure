@@ -8,8 +8,8 @@ credential = AzureCliCredential()
 compute_client = ComputeManagementClient(credential, subscription_id)
 
 def list_vm():
-    vm_list = compute_client.virtual_machines.list_all()
     # vm_list = compute_client.virtual_machines.list('resource_group_name')
+    vm_list = compute_client.virtual_machines.list_all()
     vm_names=[]
     for vm in vm_list:
         vm_names.append(vm.name)

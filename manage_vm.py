@@ -10,14 +10,14 @@ compute_client = ComputeManagementClient(credential, subscription_id)
 def start_vm(rgname,vm_name):
     start = compute_client.virtual_machines.begin_start(rgname, vm_name)
     start.wait()
-    return f"Started {vm_name}"
+    return f"The {vm_name} has started Successfully."
 
 def restart_vm(rgname,vm_name):
     restart = compute_client.virtual_machines.begin_restart(rgname, vm_name)
     restart.wait()
-    return f"Restarted {vm_name}"
+    return f"Restarted Virtual Machine {vm_name}."
 
 def stop_vm(rgname,vm_name):
     stop = compute_client.virtual_machines.begin_power_off(rgname,vm_name)
     stop.wait()
-    return f"{vm_name} stopped"
+    return f"The {vm_name} has stopped Successfully."
